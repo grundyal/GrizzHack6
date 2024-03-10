@@ -4,41 +4,29 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Registration or Sign Up form in HTML CSS | CodingLab </title> 
+    <title> Sign Up</title> 
     <link rel="stylesheet" href="./static/Style.css">
    </head>
-<body>
-  <div class="wrapper">
-    <h2>Registration</h2>
-    <form action="#">
-      <div class="input-box">
-        <input type="text" placeholder="Enter your Reddit username" required>
-      </div>
-      <div class="input-box">
-        <input type="password" placeholder="Enter your Reddit password" required>
-      </div>
-      <div class="input-box">
-        <input type="text" placeholder="Enter your email" required>
-      </div>
-      <div class="input-box">
-        <input type="text" placeholder="Enter subreddits (comma-separated)" id="subreddits" required>
-      </div>
-      <div class="input-box button">
-        <input type="Submit" value="Register Now" onclick="saveSubreddits()">
-      </div>
-    </form>
-  </div>
-
-  <script>
-    function saveSubreddits() {
-      var subredditsInput = document.getElementById("subreddits");
-      var subreddits = subredditsInput.value.split(',').map(function(subreddit) {
-        return subreddit.trim();
-      });
-
-      // You can now use the 'subreddits' array to save or process the user's subreddit preferences
-      console.log(subreddits);
-    }
-  </script>
+   <body>
+    <div class="wrapper">
+        <h2>Registration</h2>
+        <form method="post" action="/submit">
+            <div class="input-box">
+                <input type="text" placeholder="First Name" id="fname" name="fname" required>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Last Name" id="lname" name="lname" required>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Enter your email" id="email" name="email" required>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Enter subreddit" id="subreddit" name="subreddit" required>
+            </div>
+            <div class="input-box button">
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
