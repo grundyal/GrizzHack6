@@ -6,7 +6,10 @@ import time
 client = OpenAI(api_key = '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')
 
 query = """
-    For each event in you dataset, provide add to the list in the following format including an event summary and reddit reaction. Do this for at least three events.
+    You keep replying with answers outside the context of the data file i provided. you need to stop doing that.
+
+    For each event in you dataset, provide add to the list in the following format including an event summary and reddit reaction. Do this for at least three events. You can not answer with events other than from the data provided without any deviation.
+    If you respond with an event that is not in the data provided, you will be disqualified.
     Do not include any explanations, only provide a RFC8259 compliant JSON response  following this format without deviation.
     [{
     "eventSummary": "summary of the event",
@@ -55,8 +58,8 @@ def pullRedditsPostAndAiResponse(subredditName = 'news'):
     )
 
     assistant = client.beta.assistants.create(
-        name="Event Analysis Assistant 4",
-        instructions="you are an assistant that is going to interpret reddits replies to certain events being posted in the subreddit {}. First, for each important event, give a summary of the event and then another separate in depth summary of reddit's reaction.".format(subredditName),
+        name="Event Analysis Assistant",
+        instructions="you are an assistant that is going to interpret reddits replies to certain events being posted in the subreddit {}. First, for each important event, give a summary of the event and then another separate in depth summary of reddit's reaction. **You can only use the data provided in the 'data.json' file to generate responses.**".format(subredditName),
         model="gpt-3.5-turbo",
         tools=[{"type": "retrieval"}],
         file_ids=[file.id]
@@ -111,7 +114,7 @@ def pullRedditsPostAndAiResponse(subredditName = 'news'):
 
             listString = response[start:end]
             list_of_dicts = json.loads(listString)
-            return response
+            return list_of_dicts
         except:
             
             continue
