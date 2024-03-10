@@ -7,10 +7,18 @@
     <link rel="stylesheet" href="./static/loading_style.css">
 </head>
 <body>
+    <a href="/results" id="results-link" style="display: none;"></a>
     <div class="loading-container">
         <div class="loading-title">Thanks for Waiting!</div>
         <div class="loading-message">Your request is being processed.</div>
         <div class="loading-icon">⌛</div>
     </div>
+
+    <script>
+        // Use JavaScript to simulate a click on the link
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("results-link").click();
+        });
+    </script>
 </body>
 </html>
