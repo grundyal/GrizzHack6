@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f7f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.loading-container {
+    text-align: center;
+}
+
+.loading-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0079d3;
+}
+
+.loading-message {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.loading-icon {
+    margin-top: 20px;
+    font-size: 40px;
+    color: #0079d3;
+}
