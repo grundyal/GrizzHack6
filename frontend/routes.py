@@ -52,8 +52,7 @@ def process_data(email, subreddit, firstname, lastname):
 @app.route('/loading')
 def loading():
     # Redirect to the results route with stored parameters
-    render_template('loading.html')
-    return redirect(url_for('results'))
+    return render_template('loading.html')
 @app.route('/results')
 def results():
     # Retrieve data from Flask session
