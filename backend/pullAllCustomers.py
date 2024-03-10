@@ -1,27 +1,22 @@
 import mariadb
 import sys
 
+config = {
+    'host': 'localhost',
+    'port': 3306,
+    'user': 'root',
+    'password': 'password',
+    'database': 'grizzhack'
+}
+
 def getAllCustomers():
-    # Create a connection to the database
-    conn = mariadb.connect(
-        user="db_user",
-        password="db_user_passwd",
-        host="192.0.2.1",
-        port=3306,
-        database="info"
-    )
-    # Create a cursor object
-    cursor = cnx.cursor()
+    conn = mariadb.connect(**config)
+    # create a connection cursor
+    cur = conn.cursor()
+    query = f"SELECT * FROM info"
+    cur.execute(query)
+    rows = cur.fetchall()
+    conn.commit() 
+    conn.close() 
 
-    # Execute a SQL query
-    cursor.execute("SELECT * FROM info")
-
-    # Fetch all the rows
-    rows = cursor.fetchall()
-
-    for row in rows:
-        print(row)
-
-    # Close the cursor and connection
-    cursor.close()
-    cnx.close()
+    return rows

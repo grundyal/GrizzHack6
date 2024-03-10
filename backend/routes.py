@@ -9,7 +9,11 @@ from pullAllCustomers import getAllCustomers
 
 
 def manifest():
-    getAllCustomers()
+    rows = getAllCustomers()
+    for row in rows:
+        aiResponse = pullRedditsPostAndAiResponse(subredditName = row[1])
+        send_simple_message(row[2], row[3], row[0], aiResponse, row[1])
+        print('sent email to {}'.format(row[0]))
 
 app = Flask(__name__)
 
