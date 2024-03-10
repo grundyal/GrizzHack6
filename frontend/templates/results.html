@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Parser</title>
-    <link rel="stylesheet" type="text/css" href="./static/style.css">
+    <title>r/{{ subreddit }} Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='results_style.css') }}">
 </head>
-
 <body>
-    <h1>JSON Parser</h1>
-    <div id="output-container"></div>
-    <script src="./static/script.js"></script>
+    <h1>r/{{ subreddit }} Results</h1>
+    {% for event in test %}
+        <div>
+            <h2>{{ event.eventSummary }}</h2>
+            <p>{{ event.redditReaction }}</p>
+        </div>
+        <hr> <!-- Add a horizontal line between each event -->
+    {% endfor %}
 </body>
-
 </html>

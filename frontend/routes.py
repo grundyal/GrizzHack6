@@ -13,6 +13,23 @@ config = {
     'database': 'grizzhack'
 }
 
+
+test =[
+    {
+        "eventSummary": "A user shares their progress pictures after 6 months of using minoxidil and finasteride",
+        "redditReaction": "The Reddit community praises the user for their progress and shares encouraging comments. Many users express their happiness for the OP and some share their own success stories with minoxidil and finasteride."
+    },
+    {
+        "eventSummary": "A user asks for advice on dealing with shedding caused by minoxidil",
+        "redditReaction": "Reddit users provide supportive advice and suggestions to help the user cope with shedding. Some users recommend sticking with the treatment despite shedding, while others suggest incorporating dermarolling into the routine."
+    },
+    {
+        "eventSummary": "A user shares their experience of severe scalp irritation from a new shampoo",
+        "redditReaction": "The Reddit community sympathizes with the user and offers various solutions to alleviate the scalp irritation. Suggestions include switching to a different shampoo, using conditioner, or seeking advice from a dermatologist for specific treatments."
+    }
+]
+
+
 @app.route('/')
 def landing():
     return render_template('landing.html')
@@ -35,8 +52,7 @@ def submit():
     # Call the Python function to handle the data
     process_data(email, subreddit, firstname, lastname)
 
-    # Return a response, or redirect to another page if needed
-    return "Data submitted successfully"
+    return redirect(url_for('results', subreddit=subreddit))
 
 def process_data(email, subreddit, firstname, lastname):
     conn = mariadb.connect(**config)
@@ -53,7 +69,8 @@ def process_data(email, subreddit, firstname, lastname):
 
 @app.route('/results')
 def results():
-    return render_template('results.html')
+    subreddit_param = request.args.get('subreddit')
+    return render_template('results.html', test=test, subreddit=subreddit_param)
 
 if __name__ == '__main__':
     app.run(debug=True)

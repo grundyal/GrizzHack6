@@ -1,0 +1,30 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* White background */
+    color: #8b0000; /* Dark red text color */
+    margin: 20px;
+}
+
+h1 {
+    color: #ff0000; /* Bright red h1 color */
+    border-bottom: 2px solid #ff0000; /* Bright red border color */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+div {
+    background-color: #ffe5e5; /* Light red background for div */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(139, 0, 0, 0.1); /* Dark red shadow */
+}
+
+h2 {
+    color: #8b0000; /* Dark red h2 color */
+}
+
+hr {
+    border: 1px solid #8b0000; /* Dark red border for hr */
+    margin: 20px 0;
+}

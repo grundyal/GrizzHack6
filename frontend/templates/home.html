@@ -21,9 +21,24 @@
                 <input type="text" placeholder="Enter your email" id="email" name="email" required>
             </div>
             <div class="input-box">
-                <input type="text" placeholder="Enter subreddit" id="subreddit" name="subreddit" required>
+                <!-- Use a select element for the dropdown -->
+                <select id="subreddit" name="subreddit" required size="5" required>
+                    <option value="" disabled selected>Select a subreddit</option>
+                    <!-- Add up to 20 different items as options -->
+                    <option value="worldnews">World News</option>
+                    <option value="news">News</option>
+                    <option value="books">Books</option>
+                    <option value="sports">Sports</option>
+                    <option value="technology">Technology</option>
+                    <option value="Bitcoin">Bitcoin</option>
+                    <option value="overwatch">Overwatch</option>
+                    <option value="nba">NBA</option>
+                    <option value="anime">Anime</option>
+                    <option value="soccer">Soccer</option>
+                    <!-- Add more options as needed -->
+                </select>
             </div>
-            <div class="input-box button">
+            <div class="button-container">
                 <button type="submit" class="submit-button">Submit</button>
             </div>
         </form>

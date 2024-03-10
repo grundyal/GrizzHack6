@@ -37,11 +37,14 @@ body{
   border-radius: 12px;
   background: #4070f4;
 }
-.wrapper form{
+/* Increase the form height */
+.wrapper form {
   margin-top: 30px;
+  height: auto; /* Set to 'auto' or adjust the height as needed */
 }
-.wrapper form .input-box{
-  height: 52px;
+
+.wrapper form .input-box {
+  height: 80px; /* Adjust the height as needed */
   margin: 18px 0;
 }
 form .input-box input{
@@ -92,6 +95,25 @@ form .text h3 a{
 }
 form .text h3 a:hover{
   text-decoration: underline;
+}
+
+.input-box select {
+  height: 100%;
+  width: 100%; /* Adjust the width as needed */
+  outline: none;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: 1.5px solid #C7BEBE;
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+/* Add these styles to your existing CSS file */
+.button-container {
+  text-align: center;
+  margin-top: 20px; /* Adjust the margin as needed for spacing */
 }
 
 .submit-button {
