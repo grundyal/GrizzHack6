@@ -17,13 +17,12 @@ query = """
 def returnPrompt(title):
     return 'How is Reddit responding to the recent news that {}?'.format(title)
 
-def pullRedditsPostAndAiResponse():
+def pullRedditsPostAndAiResponse(subredditName = 'news'):
     # Initialize PRAW with your credentials
     reddit = praw.Reddit(client_id='MT3dJOzwjCZ9swH7_yaqtA',
                         client_secret='FjRI5qy8hhn8tQ8GB5D4kBDYohsY5w',
                         user_agent='grizzhacks by /u/Deadeye420')
 
-    subredditName = 'news'
     # Specify the subreddit you want to pull posts from
     subreddit = reddit.subreddit(subredditName)
 
@@ -112,10 +111,7 @@ def pullRedditsPostAndAiResponse():
 
             listString = response[start:end]
             list_of_dicts = json.loads(listString)
-            print(list_of_dicts)
             return response
         except:
             
             continue
-
-pullRedditsPostAndAiResponse()
