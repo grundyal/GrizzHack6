@@ -2,6 +2,10 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import mariadb
 import requests
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 app = Flask(__name__)
 app.config["DEBUG"] = True
 app.secret_key = 'your_secret_key'  # Change this to a secure secret key

@@ -2,8 +2,13 @@ import praw
 import json  
 from openai import OpenAI
 import time
+from dotenv import load_dotenv
+import os
 
-client = OpenAI(api_key = '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')
+load_dotenv()
+
+client = OpenAI(os.getenv('API_OPENAI'))
+
 
 query = """
     You keep replying with answers outside the context of the data file i provided. you need to stop doing that.
@@ -22,9 +27,9 @@ def returnPrompt(title):
 
 def pullRedditsPostAndAiResponse(subredditName = 'news'):
     # Initialize PRAW with your credentials
-    reddit = praw.Reddit(client_id='MT3dJOzwjCZ9swH7_yaqtA',
-                        client_secret='FjRI5qy8hhn8tQ8GB5D4kBDYohsY5w',
-                        user_agent='grizzhacks by /u/Deadeye420')
+    reddit = praw.Reddit(client_id=os.getenv('PRAW_CLIENTID'),
+                        client_secret=os.getenv('PRAW_CLIENTSECRET'),
+                        user_agent=os.getenv('PRAW_USERAGENT'))
 
     # Specify the subreddit you want to pull posts from
     subreddit = reddit.subreddit(subredditName)

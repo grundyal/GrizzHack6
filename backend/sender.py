@@ -1,4 +1,6 @@
 import requests
+import os
+
 def send_simple_message(firstName, lastName, email, message, subreddit):
     htmlText = """<html><body><head>
                 <style>
@@ -22,7 +24,7 @@ def send_simple_message(firstName, lastName, email, message, subreddit):
         htmlText += header + body
     return requests.post(
         "https://api.mailgun.net/v3/sandbox5497b5a60014448990a9ab8a8908fde1.mailgun.org/messages",
-        auth=("api", "692534629a3ec511f028ba6b3614f500-2c441066-9ff376b2"),
+        auth=("api", os.getenv('API_MAILGUN')),
         data={"from": "RedditSummarizer <postmaster@sandbox5497b5a60014448990a9ab8a8908fde1.mailgun.org>",
             "to": "{} {} <{}>".format(firstName, lastName, email),
             "subject": "Hello {} {}".format(firstName, lastName),
