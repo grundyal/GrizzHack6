@@ -23,7 +23,7 @@ def send_simple_message(firstName, lastName, email, message, subreddit):
         body = '<p>Reddit\'s reaction: {}</p><br></br>'.format(message[i].get("redditReaction"))
         htmlText += header + body
     return requests.post(
-        "https://api.mailgun.net/v3/sandbox5497b5a60014448990a9ab8a8908fde1.mailgun.org/messages",
+        os.getenv('API_MAILGUNURL'),
         auth=("api", os.getenv('API_MAILGUN')),
         data={"from": "RedditSummarizer <postmaster@sandbox5497b5a60014448990a9ab8a8908fde1.mailgun.org>",
             "to": "{} {} <{}>".format(firstName, lastName, email),
